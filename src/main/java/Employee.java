@@ -37,18 +37,29 @@ public class Employee {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Employee))
-            return false;
-        Employee employee = (Employee) o;
-        return getId() == employee.getId() && Objects.equals(getFirstName(),
-                employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName());
+    public int hashCode() {
+        return Objects.hash(id, firstName);
+    }
+
+    public Employee() {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName());
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Employee other = (Employee) obj;
+        if (id != other.id)
+            return false;
+        if (firstName == null) {
+            if (other.firstName != null)
+                return false;
+        } else if (!firstName.equals(other.firstName))
+            return false;
+        return true;
     }
 }

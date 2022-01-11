@@ -9,6 +9,7 @@ class UnitTestingTest {
     public void addNum() {
         UnitTesting unit = new UnitTesting();
         int result = unit.addNum(2,4);
+        System.out.println(result);
         assertEquals(6,result);
     }
 }
